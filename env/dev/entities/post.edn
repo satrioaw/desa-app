@@ -1,0 +1,6 @@
+{:name    "post"
+ :columns [{:name "id" :type :int :null false :pk true :autoinc true}
+           {:name "title" :type :varchar :max-length 100 :null false}
+           {:name "content" :type :text}
+           {:name "created_at" :type :time :null false}
+           {:name "draft" :type :boolean :null false :default true}]}

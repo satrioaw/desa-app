@@ -1,0 +1,28 @@
+{% extends "templates/base.html" %}
+{% block content %}
+
+<a href="/post/create" class="btn btn-primary" role="button">Create New post</a>
+
+<hr>
+
+<table class="table">
+    <thead>
+        <tr>
+            {% for col in cols %}
+                <td><b>{{col}}</b></td>
+            {% endfor %}
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for post in posts %}
+            <tr>
+                <td><a href="/post/{{post.id}}">{{post.title}}</a></td>
+				<td>{{post.content}}</td><td>{{post.created_at}}</td><td>{{post.draft}}</td>
+				<td><a class="btn btn-primary" href="/post/delete/{{post.id}}">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

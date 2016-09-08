@@ -1,0 +1,18 @@
+{% extends "templates/base.html" %}
+{% block content %}
+
+<form action="/post/{{create_update|lower}}" class="form" method="post">
+    <input name="__anti-forgery-token" type="hidden" value="{{af-token}}"/>
+    <input name="id" type="hidden" value="{{post.id}}"/>
+    <div class="form-group"><label for="title">title</label><input class="form-control" id="title" maxlength="100" name="title" required="required" value="{{post.title}}" /></div>
+
+<div class="form-group"><label for="content">content</label><textarea class="form-control" id="content" name="content" value="{{post.content}}">{{post.content}}</textarea></div>
+
+<div class="form-group"><label for="created_at">created_at</label><input class="form-control" id="created_at" name="created_at" required="required" value="{{post.created_at}}" /></div>
+
+<div class="form-group"><label><input checked="checked" class="form-control" id="draft" name="draft" type="checkbox" {%if post.draft = 1 %}checked{% endif %} />draft</label></div>
+
+    <button class="btn btn-primary" type="submit">{{create_update}} post</button>
+</form>
+
+{% endblock %}
